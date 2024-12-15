@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment</title>
+</head>
+<body>
+<h2>    Are You Sure Want to Pay</h2>
+    <button id="rzp-button1">Yes</button>
+    <a href="/"><button>No</button></a>
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script th:inline="javascript">
+var options = {
+    "key": /*[[${key}]]*/, 
+    "amount": "[[${amount}]]", 
+    "currency": /*[[${currency}]]*/,
+    "name": "Recharge With Me",
+    "description": "Recharging Phone",
+    "image": "https://gratisography.com/wp-content/uploads/2024/10/gratisography-cool-cat-800x525.jpg",
+    "order_id": /*[[${orderId}]]*/, 
+    "callback_url":"/success",
+    "prefill": {
+        "name": "Darshan L",
+        "email": "darshanl1254@gmail.com",
+        "contact": "[[${mobile}]]"
+    },
+    "notes": {
+        "address": "Razorpay Corporate Office"
+    },
+    "theme": {
+        "color": "#F29F58"
+    }
+};
+var rzp1 = new Razorpay(options);
+document.getElementById('rzp-button1').onclick = function(e){
+    rzp1.open();
+    e.preventDefault();
+}
+</script>
+</body>
+</html>
