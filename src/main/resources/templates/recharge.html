@@ -4,21 +4,92 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Recharge</title>
+    <style>
+        /* General styling */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+        }
+
+        /* Centered container */
+        .container {
+            text-align: center;
+            padding: 30px;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            color: green;
+            font-size: 18px;
+        }
+
+        /* Form styling */
+        form {
+            display: inline-block;
+            text-align: left;
+            background: #fff;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        form input, form select, form button {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        form button {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 18px;
+        }
+
+        form button:hover {
+            background-color: #218838;
+        }
+    </style>
 </head>
 <body>
-    <div align="center">
-    <h2 th:text="${success}" style="color:green"></h2>
-        <h1>Recharge Your Mobile Here......</h1>
+
+    <!-- Main content -->
+    <div class="container">
+        <h2 th:text="${success}"></h2>
+        <h1>Recharge Your Mobile Here</h1>
         <form action="/recharge" method="post">
-            Mobile : <input type="number" name="mobile" placeholder="Enter Mobile Number"/><br><br>
-            Email : <input type="email" name="email" placeholder="Enter Email" /><br><br>
-            Sim : <input type="radio" name="sim" value="Airtel"/>Airtel
-                  <input type="radio" name="sim" value="Jio"/>Jio
-                  <input type="radio" name="sim" value="Vodafone"/>Vodafone
-                  <input type="radio" name="sim" value="Idea"/>Idea <br><br>
-            Amount : <input type="number" name="amount" placeholder="Enter Amount"/><br><br>
-            <button>Recharge</button>
+            <label for="mobile">Mobile:</label>
+            <input type="number" id="mobile" name="mobile" placeholder="Enter Mobile Number" required />
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" placeholder="Enter Email" required />
+
+            <label for="sim">Sim:</label>
+            <select id="sim" name="sim" required>
+                <option value="" disabled selected>Select your Sim</option>
+                <option value="Airtel">Airtel</option>
+                <option value="Jio">Jio</option>
+                <option value="Vodafone">Vodafone</option>
+                <option value="Idea">Idea</option>
+            </select>
+
+            <label for="amount">Amount:</label>
+            <input type="number" id="amount" name="amount" placeholder="Enter Amount" required />
+
+            <button type="submit">Recharge</button>
         </form>
     </div>
+
 </body>
 </html>
